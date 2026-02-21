@@ -88,3 +88,5 @@ class FakeNewsDetectorModels:
                 "success": False,
             }
 
+# Global singleton used by app.py
+model_detector = FakeNewsDetectorModels()
