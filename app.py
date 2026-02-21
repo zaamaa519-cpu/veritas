@@ -1160,7 +1160,22 @@ def predict():
         x_social_fake = x_result.get("social_fake_prob", 0.0)
         
         # Confidence modulation (NOT replacement)
-        fake_prob = min(1.0, fake_prob * (1 + x_social_fake * 0.6))
+        twitter_verified_mentions = x_result.get("evidence", {}).get("verified_mentions", 0)
+        TWITTER_WEIGHT  = 0.40
+        ENSEMBLE_WEIGHT = 0.60
+
+        if twitter_verified_mentions >= 3:
+            twitter_score = max(0.0, x_social_fake - 0.4)  # strong REAL signal
+        elif twitter_verified_mentions >= 1:
+            twitter_score = max(0.0, x_social_fake - 0.2)  # mild REAL signal
+        elif x_social_fake > 0.0:
+            twitter_score = x_social_fake                   # strong FAKE signal
+        else:
+            twitter_score = fake_prob                        # no Twitter data, ignore it
+            TWITTER_WEIGHT  = 0.0
+            ENSEMBLE_WEIGHT = 1.0
+        fake_prob = min(1.0, (ENSEMBLE_WEIGHT * fake_prob) + (TWITTER_WEIGHT * twitter_score))
+
 
         # STEP 6: Confidence adjustment
         conf = fake_prob if raw_label == "FAKE" else (1 - fake_prob)
