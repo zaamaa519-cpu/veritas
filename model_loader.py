@@ -88,11 +88,3 @@ class FakeNewsDetectorModels:
                 "success": False,
             }
 
-
-# Global singleton used by app.py
-model_detector = FakeNewsDetectorModels()
-```
-
-**Then update `requirements.txt` — add back transformers:**
-```
-transformers==4.39.3
