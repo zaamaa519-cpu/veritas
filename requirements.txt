@@ -1,0 +1,22 @@
+# Veritas AI - Python Flask backend (app.py)
+# Install: pip install -r requirements.txt
+
+# === CORE (required to run) ===
+flask>=2.3.0
+flask-cors>=4.0.0
+flask-bcrypt>=1.0.1
+python-dotenv>=1.0.0
+nltk>=3.8.0
+
+# === OPTIONAL (app runs without these - NLP-only mode) ===
+# OpenAI for AI verification
+openai>=0.28.0,<1.0
+
+# NewsAPI for source verification  
+newsapi-python>=0.2.7
+
+# MongoDB for history/storage
+pymongo>=4.0.0
+
+# JWT for API authentication
+PyJWT>=2.0.0
