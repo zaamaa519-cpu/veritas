@@ -2,6 +2,7 @@
 flask==3.0.0
 flask-cors==4.0.0
 flask-bcrypt==1.0.1
+werkzeug==3.0.1
 
 # Database
 pymongo==4.6.1
@@ -12,12 +13,23 @@ transformers==4.36.0
 scikit-learn==1.3.2
 numpy==1.24.3
 nltk==3.8.1
+sentencepiece==0.1.99
 
 # APIs
 openai==1.6.1
 newsapi-python==0.2.7
 requests==2.31.0
+tweepy==4.14.0
 
-# Auth
+# Auth & Security
 pyjwt==2.8.0
 python-dotenv==1.0.0
+cryptography==41.0.7
+
+# Utilities
+python-dateutil==2.8.2
+urllib3==2.1.0
+certifi==2023.11.17
+
+# Optional but recommended
+gunicorn==21.2.0
