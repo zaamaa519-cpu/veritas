@@ -12,6 +12,8 @@ torch==2.9.0
 scikit-learn==1.5.2
 numpy==2.0.0
 nltk==3.8.1
+transformers==4.39.3 
+
 
 # APIs
 openai==1.6.1
